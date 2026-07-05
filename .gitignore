@@ -13,3 +13,7 @@ node_modules/
 
 # Django collectstatic output (generated at deploy/Docker build time)
 staticfiles/
+
+# Python bytecode cache (regenerated automatically, not needed to deploy)
+__pycache__/
+*.pyc

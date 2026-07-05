@@ -5,7 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY tailwind.config.js ./
 COPY recipes/templates ./recipes/templates
-COPY recipes/static/recipes/src ./recipes/static/recipes/src
+COPY recipes/tailwind_src ./recipes/tailwind_src
 RUN npm run build
 
 # ---- Stage 2: Python runtime ----
