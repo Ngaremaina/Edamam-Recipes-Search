@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Recipe Engine{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-br from-brand-600 to-brand-800 py-14 text-center text-white">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Find your next favorite recipe</h1>
+    <p class="mt-3 text-brand-100">Search thousands of dishes by name, ingredient, or cuisine.</p>
+  </div>
+</div>
+
+<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+  {% if recipes %}
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {% for recipe in recipes %}
+    <div class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:-translate-y-1 hover:shadow-lg">
+      <div class="relative h-48 w-full overflow-hidden bg-gray-100">
+        <img
+          src="{{ recipe.recipe.image }}"
+          alt="{{ recipe.recipe.label }}"
+          class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          loading="lazy"
+        >
+        {% if recipe.recipe.calories %}
+        <span class="absolute right-2 top-2 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-brand-700 shadow">
+          {{ recipe.recipe.calories|floatformat:0 }} kcal
+        </span>
+        {% endif %}
+      </div>
+
+      <div class="flex flex-1 flex-col p-4">
+        <h2 class="line-clamp-2 text-base font-bold text-gray-900">{{ recipe.recipe.label }}</h2>
+        <p class="mt-1 text-sm text-gray-500">{{ recipe.recipe.source }}</p>
+
+        {% if recipe.recipe.dishType %}
+        <div class="mt-3 flex flex-wrap gap-1.5">
+          {% for dishType in recipe.recipe.dishType %}
+          <span class="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium capitalize text-brand-700">{{ dishType }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if recipe.recipe.ingredientLines %}
+        <details class="mt-3 text-sm text-gray-600">
+          <summary class="cursor-pointer select-none font-semibold text-gray-800 hover:text-brand-700">
+            Ingredients ({{ recipe.recipe.ingredientLines|length }})
+          </summary>
+          <ul class="mt-2 list-inside list-disc space-y-1 text-gray-500">
+            {% for ingredient in recipe.recipe.ingredientLines %}
+            <li>{{ ingredient }}</li>
+            {% endfor %}
+          </ul>
+        </details>
+        {% endif %}
+
+        <div class="mt-4 flex gap-2">
+          {% if recipe.recipe.url %}
+          <a href="{{ recipe.recipe.url }}" target="_blank" rel="noopener noreferrer" class="btn-primary flex-1">
+            View Full Recipe
+          </a>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <form method="post" action="{% url 'toggle-favorite' %}">
+            {% csrf_token %}
+            <input type="hidden" name="recipe_uri" value="{{ recipe.recipe.uri }}">
+            <input type="hidden" name="label" value="{{ recipe.recipe.label }}">
+            <input type="hidden" name="image" value="{{ recipe.recipe.image }}">
+            <input type="hidden" name="source" value="{{ recipe.recipe.source }}">
+            <input type="hidden" name="url" value="{{ recipe.recipe.url }}">
+            <button
+              type="submit"
+              aria-label="{% if recipe.is_favorited %}Remove from favorites{% else %}Save to favorites{% endif %}"
+              class="rounded-lg border px-3 py-2 text-sm font-semibold transition {% if recipe.is_favorited %}border-red-200 bg-red-50 text-red-600 hover:bg-red-100{% else %}border-gray-300 text-gray-500 hover:border-brand-300 hover:text-brand-700{% endif %}"
+            >
+              {% if recipe.is_favorited %}♥{% else %}♡{% endif %}
+            </button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="mx-auto flex max-w-md flex-col items-center py-16 text-center">
+    <span class="text-5xl" aria-hidden="true">🍽️</span>
+    <h2 class="mt-4 text-xl font-bold text-gray-900">No recipes found</h2>
+    <p class="mt-2 text-sm text-gray-500">Try searching for a dish, ingredient, or cuisine using the search bar above.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

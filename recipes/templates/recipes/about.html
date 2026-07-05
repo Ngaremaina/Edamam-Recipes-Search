@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us - Recipe Engine{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-br from-brand-600 to-brand-800 py-14 text-center text-white">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">About Recipe Engine</h1>
+    <p class="mt-3 text-brand-100">Your intelligent companion in the kitchen.</p>
+  </div>
+</div>
+
+<div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+  <p class="text-lg leading-relaxed text-gray-700">
+    Welcome to <strong class="text-gray-900">Recipe Engine</strong> – your intelligent companion in the kitchen!
+    Our platform is designed to help you discover delicious recipes tailored to your taste, dietary needs, and
+    available ingredients.
+  </p>
+
+  <div class="mt-10 space-y-10">
+    <section>
+      <h3 class="flex items-center gap-2 text-xl font-bold text-gray-900">
+        <span aria-hidden="true">🔍</span> What We Do
+      </h3>
+      <p class="mt-3 text-gray-600">
+        Recipe Engine is a dynamic search tool that lets you explore thousands of recipes sourced from the
+        powerful <a href="https://www.edamam.com/" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:text-brand-800">Edamam API</a>.
+        Whether you're cooking with limited ingredients or searching for healthy meal options, we help you find
+        the right recipe in seconds.
+      </p>
+    </section>
+
+    <section>
+      <h3 class="flex items-center gap-2 text-xl font-bold text-gray-900">
+        <span aria-hidden="true">🛠</span> Built With Modern Technologies
+      </h3>
+      <ul class="mt-3 space-y-2 text-gray-600">
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span><strong class="text-gray-900">Django</strong> – for handling our robust backend, routing, and template rendering</span></li>
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span><strong class="text-gray-900">Edamam API</strong> – to fetch and serve real-time recipe data, nutritional information, and more</span></li>
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span><strong class="text-gray-900">HTML5, CSS3, Tailwind CSS</strong> – to deliver a responsive and user-friendly front end</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h3 class="flex items-center gap-2 text-xl font-bold text-gray-900">
+        <span aria-hidden="true">💡</span> Why Use Recipe Engine?
+      </h3>
+      <ul class="mt-3 space-y-2 text-gray-600">
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span>Search recipes by ingredients, diet, or cuisine</span></li>
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span>Get step-by-step cooking instructions</span></li>
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span>Save time and reduce food waste</span></li>
+        <li class="flex gap-2"><span class="text-brand-600">•</span><span>Discover new meal ideas tailored to your needs</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h3 class="flex items-center gap-2 text-xl font-bold text-gray-900">
+        <span aria-hidden="true">🤝</span> Our Mission
+      </h3>
+      <p class="mt-3 text-gray-600">
+        Our mission is to empower home cooks of all skill levels to enjoy cooking, eat healthier, and make the
+        most of what they have in their kitchens.
+      </p>
+    </section>
+
+    <section class="rounded-xl bg-brand-50 p-6">
+      <h3 class="flex items-center gap-2 text-xl font-bold text-gray-900">
+        <span aria-hidden="true">📬</span> Contact Us
+      </h3>
+      <p class="mt-3 text-gray-600">
+        Have feedback, suggestions, or collaboration ideas? We'd love to hear from you! Visit our
+        <a href="{% url 'contact-page' %}" class="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:text-brand-800">Contact page</a>
+        and drop us a message.
+      </p>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "name": "recipe-search-engine",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tailwindcss -i ./recipes/static/recipes/src/input.css -o ./recipes/static/recipes/dist/styles.css --minify",
+    "watch": "tailwindcss -i ./recipes/static/recipes/src/input.css -o ./recipes/static/recipes/dist/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

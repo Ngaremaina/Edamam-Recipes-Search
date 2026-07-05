@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: recipes-app-ksdw
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /recipes/about
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: EDAMAM_APP_ID
+        sync: false
+      - key: EDAMAM_APP_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USER
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: DEBUG
+        value: "False"

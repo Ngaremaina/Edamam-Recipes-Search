@@ -1,0 +1,15 @@
+# Ignore environment variable files
+.env
+.env.*
+.venv**
+
+# Optional: ignore virtual environments
+venv/
+env/
+ENV/
+
+# Node / Tailwind build tooling (compiled CSS in recipes/static/recipes/dist is committed)
+node_modules/
+
+# Django collectstatic output (generated at deploy/Docker build time)
+staticfiles/
