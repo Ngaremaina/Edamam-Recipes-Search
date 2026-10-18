@@ -32,8 +32,7 @@ EDAMAM_APP_KEY = config('EDAMAM_APP_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = [
-    'edamam-recipes-search.onrender.com',
-    'edamam-recipes-search-beta.vercel.app',
+    'edamam-recipes-search.vercel.app',
     '127.0.0.1',
     'localhost'
 ]
