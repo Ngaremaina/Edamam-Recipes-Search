@@ -32,8 +32,7 @@ EDAMAM_APP_KEY = config('EDAMAM_APP_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = [
-    'edamam-recipes-search.onrender.com',
-    'edamam-recipes-search-beta.vercel.app',
+    'edamam-recipes-search.vercel.app',
     '127.0.0.1',
     'localhost'
 ]
@@ -102,10 +101,6 @@ if _db_password:
     _db_config['PASSWORD'] = _db_password
 
 DATABASES = {'default': _db_config}
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
