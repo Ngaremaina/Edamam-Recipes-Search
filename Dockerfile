@@ -9,7 +9,7 @@ COPY recipes/tailwind_src ./recipes/tailwind_src
 RUN npm run build
 
 # ---- Stage 2: Python runtime ----
-FROM python:3.14-slim AS runtime
+FROM python:3.15-slim AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 WORKDIR /app
